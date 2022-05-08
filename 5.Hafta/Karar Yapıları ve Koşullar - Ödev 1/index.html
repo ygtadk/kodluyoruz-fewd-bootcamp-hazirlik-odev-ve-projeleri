@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duvar Saati</title>
+  <link rel="stylesheet" href="clock&date.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="isimSor()">
+  <button onclick="theme()" class="theme_button">Tema</button>
+  <button onclick="isimSor()" class="theme_button" style="left: 5px;">Yeniden</button>
+  <div class="time">
+    <span class="hrs"></span>
+    <span class="dd">:</span>
+    <span class="min"></span>
+    <span class="dd">:</span>
+    <span class="sec"></span>
+    <br>
+    <span class="date"></span>
+  </div>
+  <div class="welcome">
+    <p id="wt">Merhaba !</p>
+  </div>
+
+  <script src="clock.js"></script>
+  <script>
+    function isimSor() {
+      let isim = prompt("Adınızı giriniz.").trim();
+      document.getElementById("wt").innerHTML = "Merhaba " + isim + ".";
+    }
+
+    function theme() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+  </script>
+</body>
+
+</html>
