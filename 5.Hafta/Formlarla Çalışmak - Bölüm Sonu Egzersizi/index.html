@@ -21,28 +21,51 @@
 
   <div class="container">
     <div class="py-5 px-5 rounded-7 logdiv">
-      <form class="row g-3 needs-validation" novalidate>
+      <form id="userForm" class="row g-3 needs-validation" novalidate>
         <div class="col-md-6">
-          <label for="validationCustom01" class="form-label">Adın</label>
-          <input type="text" class="form-control" id="validationCustom01" required>
+          <label for="name" class="form-label">Adın</label>
+          <input id="userName" type="text" class="form-control" id="name" required>
           <div class="valid-feedback">
             İyi görünüyor!
           </div>
         </div>
         <div class="col-md-6">
-          <label for="validationCustom02" class="form-label">Soyadın</label>
-          <input type="text" class="form-control" id="validationCustom02" required>
+          <label for="surname" class="form-label">Soyadın</label>
+          <input id="userSurname" type="text" class="form-control" id="surname" required>
           <div class="valid-feedback">
             İyi görünüyor!
           </div>
         </div>
 
         <div class="col-md-12">
-          <label for="exampleInputEmail1" class="form-label">E-posta Adresin</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          <label for="email" class="form-label">E-posta Adresin</label>
+          <input id="userEmail" type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
           <div id="emailHelp" class="form-text">E-posta adresini kesinlikle kimseyle paylaşmayacağız.</div>
+          <div class="valid-feedback">
+            İyi görünüyor!
+          </div>
+          <div class="invalid-feedback">
+            Lütfen geçerli bir e-posta adresi girin.
+          </div>
         </div>
 
+        <div class="col-md-6">
+          <label for="password1" class="form-label">Parolan</label>
+          <input id="userPassword" type="password" class="form-control" id="password1" required>
+          <div class="valid-feedback">
+            İyi görünüyor!
+          </div>
+          <div class="invalid-feedback">
+            Lütfen geçerli bir parola girin.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="password2" class="form-label">Parolan (Tekrar Gir)</label>
+          <input type="password" class="form-control" id="password2" required>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
       </form>
     </div>
   </div>
@@ -53,7 +76,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-  <!-- Login Sistemi -->
+  <!-- Benim Kodlar -->
   <script src="main.js"></script>
 </body>
 

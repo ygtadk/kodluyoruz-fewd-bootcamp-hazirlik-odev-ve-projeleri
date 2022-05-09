@@ -1,58 +1,69 @@
+// Submit fonksiyonu +
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        // if (document.getElementById("password1").value != document.getElementById("password2").value) {
+        //   alert("Password mismatch");
+        //   event.preventDefault();
+        //   event.stopPropagation();
+        // }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+// Submit fonksiyonu -
+
 let userForm = document.querySelector("#userForm");
-let userName = document.querySelector("#username");
-let password = document.querySelector("#password");
-let ulList = document.querySelector("#ullist");
-let listBox = document.querySelector("#listBox");
+const toastNotification = document.querySelector("#toastNf");
 
+userPassword = document.querySelector("#userPassword");
+userName = document.querySelector("#userName");
+userSurname = document.querySelector("#userSurname");
+userEmail = document.querySelector("#userEmail");
 
-const submitFunc = (event) => {
+const formHandler = (event) => {
   event.preventDefault()
 
-  if (userName.value && password.value) {
-    setUserPassword(userName.value, password.value)
-    let alarm = setAlarm("Başarılı !", " Kullanıcı ve Şifre Başarılı Bir Şekilde Eklendi", "success");
-    userName.value = "";
-    password.value = "";
-    setTimeout(alarm, 2)
+  if (userName.value && userPassword.value && userSurname.value && userEmail.value) {
+    setUserInfo(userName.value, userSurname.value, userEmail.value, userPassword.value);
+    toastNotification.innerHTML =
+    `
+    <div class="alert alert-success" role="alert">
+    <strong>Tebrikler!</strong> Kayıt başarılı.
+    </div>
+    `;
   }
 
   else {
-    setAlarm("Başarısız !", " Lütfen Geçerli Bir Kullanıcı ve Şifre Giriniz", "danger")
+
   }
 
 }
 
-const setUserPassword = (username, password) => {
-
+// LocalStorage işlemleri +
+const setUserInfo = (name, surname, email, password) => {
   let userInfo = {
-    username: username,
+    name: name,
+    surname: surname,
+    email: email,
     password: password
   }
-
   localStorage.setItem("userInfo", JSON.stringify(userInfo));
-  let getUserInfo = JSON.parse(localStorage.getItem("userInfo"));
-  
 }
 
-const setAlarm = (station, stationText, stationColor) => {
-  let div = document.querySelector("#toast");
-  div.classList.add("div");
-  div.innerHTML = `
-    <div class="col-md-5 mt-5 m-auto" id="alertSign">
-                    <div class="alert alert-${stationColor} alert-dismissible fade show" role="alert">
-                        <strong>${station}</strong>${stationText}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-    `
+function getUserInfo() {
+  return JSON.parse(localStorage.getItem("userInfo"));
 }
+// LocalStorage işlemleri -
 
-let resetButton = document.querySelector("#reset");
-
-const clearFunc = () => {
-  ulList.innerHTML = "";
-  listBox.classList.remove("listBox");
-}
-
-resetButton.addEventListener("click", clearFunc);
-userForm.addEventListener("submit", submitFunc);
+userForm.addEventListener("submit", formHandler);
